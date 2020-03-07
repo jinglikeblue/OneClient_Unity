@@ -1,0 +1,12 @@
+
+{
+    "client" : {
+        "version" : null,
+        "url"     : null
+    },
+    "netResRoot" : null,
+    "startupResGroups" : [
+    ],
+    "startupParams"    : {
+    }
+}
