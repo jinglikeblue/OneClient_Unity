@@ -669,7 +669,7 @@ MonoBehaviour:
     methodName: Startup
     hotResMode: 2
     netRoot: http://wepieces.cn/unity/zero/demo/res
-    isUseDll: 0
+    isUseDll: 1
     ilType: 0
     isDebugIL: 1
     isLoadPdb: 1

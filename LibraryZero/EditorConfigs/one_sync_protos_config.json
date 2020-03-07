@@ -1,0 +1,6 @@
+﻿
+{
+    "protoDir" : "D:/projects/one_projects/OneClient_Unity/OneProtoTool/protos",
+    "generateToolEXE" : "D:/projects/one_projects/OneClient_Unity/OneProtoTool/OneProtoTool.exe",
+    "localClassDir"   : "D:/projects/one_projects/OneClient_Unity/Assets/@Scripts/Generated/Net"
+}

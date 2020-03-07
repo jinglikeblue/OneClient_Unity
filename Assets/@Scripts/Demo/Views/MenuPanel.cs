@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Chat;
+using Google.Protobuf;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using ZeroHot;
@@ -17,6 +19,7 @@ namespace ILDemo
 
             //AddBtn("Roushan", RoushanTest);
             AddBtn("Connect Server", ConnectServer);
+            AddBtn("Test Protobuf", TestProtobuf);
         }
 
         private void ConnectServer()
@@ -36,6 +39,22 @@ namespace ILDemo
             go.SetActive(true);
             go.GetComponentInChildren<Text>().text = label;            
             go.GetComponent<Button>().onClick.AddListener(() => { action.Invoke(); });           
+        }
+
+        void TestProtobuf()
+        {            
+            req_chat msg = new req_chat()
+            {
+                Content = "hello",
+                Channel = chat_channel.ChatTypeRoom,
+                Target = 1
+            };
+
+            Dumper.Dump(msg);
+
+            byte[] bytes = msg.ToByteArray();
+            var obj = req_chat.Parser.ParseFrom(bytes);
+            Dumper.Dump(obj);
         }
     }
 }

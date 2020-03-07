@@ -1,4 +1,7 @@
-﻿namespace ZeroHot
+﻿using Chat;
+using Google.Protobuf;
+
+namespace ZeroHot
 {
     public class Main
     {
