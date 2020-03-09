@@ -1,7 +1,9 @@
 ﻿using Google.Protobuf;
+using One;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using Zero;
 using ZeroHot;
 
 namespace ILDemo
@@ -42,18 +44,20 @@ namespace ILDemo
 
         void TestProtobuf()
         {
-            var msg = new Chat.req_chat()
-            {
-                Content = "hello",
-                Channel = Chat.chat_channel.ChatTypeRoom,
-                Target = 1
-            };
+            var login = new ReqLogin();
+            login.Nickname = "Jing";
+
+            var msg = new ProtoPackage();
+            msg.MsgId = 1;
+            msg.MsgBody = login.ToByteString();
+
 
             Dumper.Dump(msg);
 
             byte[] bytes = msg.ToByteArray();
-            var obj = Chat.req_chat.Parser.ParseFrom(bytes);
-            Dumper.Dump(obj);
+            var obj = ProtoPackage.Parser.ParseFrom(bytes);
+            var obj1 = ReqLogin.Parser.ParseFrom(msg.MsgBody);            
+            Debug.Log(Log.C(Log.COLOR_PURPLE, obj1.Nickname));            
         }
     }
 }
