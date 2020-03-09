@@ -18,6 +18,7 @@ public class SyncProtosEditorModule : AEditorModule
 
     public class ConfigVO
     {
+        public string[] protoSources = new string[0];
         public string protoDir = "";
         public string generateToolEXE = "";
         public string localClassDir = "";
@@ -41,6 +42,7 @@ public class SyncProtosEditorModule : AEditorModule
         protoDir = _cfg.protoDir;
         generateToolEXE = _cfg.generateToolEXE;
         localClassDir = _cfg.localClassDir;
+        protoSources = _cfg.protoSources;
     }
 
     [LabelText("保存配置"), Button(size: ButtonSizes.Large), PropertyOrder(-1)]
@@ -49,6 +51,7 @@ public class SyncProtosEditorModule : AEditorModule
         _cfg.protoDir = protoDir;
         _cfg.generateToolEXE = generateToolEXE;
         _cfg.localClassDir = localClassDir;
+        _cfg.protoSources = protoSources;
         EditorConfigUtil.SaveConfig(_cfg, CONFIG_NAME);
     }
 
@@ -63,7 +66,7 @@ public class SyncProtosEditorModule : AEditorModule
         ZeroEditorUtil.OpenDirectory(protoDir);
     }
 
-    [ProgressBar(0, 1), ReadOnly, LabelText("下载中..."), ShowIf("ShowProgressEnable")]
+    [ProgressBar(0, "@protoSources.Length"), ReadOnly, LabelText("下载中..."), ShowIf("ShowProgressEnable")]
     public float updateProgress = -1;
 
     bool ShowProgressEnable()
@@ -85,7 +88,8 @@ public class SyncProtosEditorModule : AEditorModule
     IEnumerator UpdateProtosCoroutine()
     {
         updateProgress = 0;
-        int i = 0;
+        int i = 0;        
+
         foreach (var protoUri in protoSources)
         {
             var fileName = Path.GetFileName(protoUri);
@@ -98,7 +102,7 @@ public class SyncProtosEditorModule : AEditorModule
                 yield return null;
             }
 
-            updateProgress = i / (float)protoSources.Length;
+            updateProgress = ++i;
         }
         updateProgress = -1;
     }
