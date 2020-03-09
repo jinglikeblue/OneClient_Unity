@@ -138,6 +138,7 @@ public class SyncProtosEditorModule : AEditorModule
             p.Start();
             p.WaitForExit();
         }
+        AssetDatabase.Refresh();
         editorWin.ShowTip("完成");
     }
 

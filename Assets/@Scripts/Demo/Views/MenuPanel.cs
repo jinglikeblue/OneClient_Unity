@@ -1,5 +1,4 @@
-﻿using Chat;
-using Google.Protobuf;
+﻿using Google.Protobuf;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
@@ -42,18 +41,18 @@ namespace ILDemo
         }
 
         void TestProtobuf()
-        {            
-            req_chat msg = new req_chat()
+        {
+            var msg = new Chat.req_chat()
             {
                 Content = "hello",
-                Channel = chat_channel.ChatTypeRoom,
+                Channel = Chat.chat_channel.ChatTypeRoom,
                 Target = 1
             };
 
             Dumper.Dump(msg);
 
             byte[] bytes = msg.ToByteArray();
-            var obj = req_chat.Parser.ParseFrom(bytes);
+            var obj = Chat.req_chat.Parser.ParseFrom(bytes);
             Dumper.Dump(obj);
         }
     }

@@ -1,5 +1,5 @@
 //命名空间和proto文件一致
-namespace  Chat
+namespace Chat
 {
     /// <summary>
     /// push:推送消息(S2C) req:请求消息(C2S) resp:回复消息(S2C)

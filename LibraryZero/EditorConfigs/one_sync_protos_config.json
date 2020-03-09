@@ -4,7 +4,7 @@
         "http://70d1ve.coding-pages.com/test/combat.proto",
         "http://70d1ve.coding-pages.com/test/friend.proto",
         "http://70d1ve.coding-pages.com/test/chat.proto",
-        "http://70d1ve.coding-pages.com/test/generate.proto"
+        "http://70d1ve.coding-pages.com/test/general.proto"
     ],
     "protoDir"     : "D:/projects/one_projects/OneClient_Unity/OneProtoTool/protos",
     "generateToolEXE" : "D:/projects/one_projects/OneClient_Unity/OneProtoTool/OneProtoTool.exe",
