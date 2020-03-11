@@ -2,5 +2,5 @@
   "protoSourceDir": "protos",
   "csharpOutputDir": "csharp",
   "protocFile": "protoc.exe",
-  "copyPath": "D:/projects/one_projects/OneClient_Unity/Assets/@Scripts/Generated/Net"
+  "copyPath": "E:\\_projects\\one_projects\\OneClient_Unity\\Assets\\@Scripts\\Generated\\Net"
 }

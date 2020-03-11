@@ -63,6 +63,10 @@ public class SyncProtosEditorModule : AEditorModule
 
     void OpenProtoDir()
     {
+        if(false == Directory.Exists(protoDir))
+        {
+            Directory.CreateDirectory(protoDir);
+        }
         ZeroEditorUtil.OpenDirectory(protoDir);
     }
 
@@ -132,9 +136,11 @@ public class SyncProtosEditorModule : AEditorModule
 
         using(Process p = new Process())
         {
-            p.StartInfo.WorkingDirectory = Path.GetDirectoryName(generateToolEXE);
-            p.StartInfo.FileName = generateToolEXE;
-            p.StartInfo.Arguments = localClassDir;
+            FileInfo generateToolFile = new FileInfo(generateToolEXE);
+            DirectoryInfo outputDir = new DirectoryInfo(localClassDir);
+            p.StartInfo.WorkingDirectory = generateToolFile.Directory.FullName;
+            p.StartInfo.FileName = generateToolFile.FullName;
+            p.StartInfo.Arguments = outputDir.FullName;
             p.Start();
             p.WaitForExit();
         }
